@@ -1,3 +1,12 @@
+
+#* Scrivi un programma che calcola l'importo delle tasse da pagare in base al reddito annuale dell'utente
+#* secondo la seguente tabella:
+#* · Fino a 10000€ -> Nessuna tassa
+#* · Tra 10001€ e 30000€ -> 10% sulla parte eccedente i 10000€
+#* · Tra 30001€ e 60000€ -> 20% sulla parte eccedente i 30000€
+#* · Oltre 60000€ -> 30% sulla parte eccedente i 60000€
+#* Il programma deve calcolare l'importo totale delle tasse da pagare
+
 reddito = float(input("Inserire reddito annuale: "))
 
 if reddito >= 0 and reddito <= 10000:

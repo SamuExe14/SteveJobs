@@ -1,4 +1,10 @@
-min = float("inf") # 
+
+#* Scrivi un programma che permette all'utente di inserire una sequenza di numeri fino a quando inserisce -1
+#* Alla fine il programma deve:
+#* · Stampare il numero massimo e minimo inserito 
+#* · Calcolare la media dei numeri
+#* · Contare quanti numeri pari e dispari sono stati inseriti
+min = float("inf")
 max = float("-inf")
 sum = 0
 counter = 0
@@ -21,4 +27,4 @@ while True:
     pari += 1
   if num % 2 == 1:
     dispari += 1
-print(f"dispari: {dispari}\n pari: {pari}\n massimo: {max}\n minimo: {min}")
+print(f"\ndispari: {dispari}\npari: {pari}\nmassimo: {max}\nminimo: {min}")
