@@ -33,6 +33,13 @@ try:
 except Exception as _:
    print("Si è verificato un errore: ", _)
 
+try:
+   risultato = 10/2
+except ZeroDivisionError:
+   print("Non è possibile effettuare una divisione per zero")
+else: # la clausola else viene eseguita se non si verificano eccezioni
+   print("Risultato:", risultato)
+
 #? ESEMPIO ECCEZIONE CON I FILE
 
 try:
@@ -70,12 +77,71 @@ with open("./res/dati.txt", "r") as f:
    for riga in f:
       print(riga.strip())
    f.close()
+
 #? ESEMPIO WRITE
 
 with open("./res/dati.txt", "w") as f:
-   f.write("Questo è un esempio di scrittura su file")
+   f.write("Questo è un esempio di scrittura su file") # write() scrive una stringa nel file
    f.close()
 
 linee = ["Prima riga\n", "Seconda riga\n", "Terza riga\n"]
 with open("./res/dati.txt", "w") as f:
-   f.writelines(linee)
+   f.writelines(linee) # writelines() scrive una lista di stringhe nel file
+
+#? ESEMPIO ELSE E FINALLY
+
+try:
+   file = open("dati.txt", "r")
+   contenuto = file.read()
+except Exception as _:
+   print("Errore: ", _)
+else:
+   dati = file.read()
+   print("Dati letti: ", dati)
+finally:
+   if 'file' in locals():
+      print("Chiusura del file")
+      file.close()
+
+#! CSV (Comma Separated Values)
+import csv
+
+# lettura da un file csv
+with open("./res/dati.csv") as csvfile:
+   lettore = csv.reader(csvfile, delimiter=",")
+   for riga in lettore:
+      print(riga)
+   csvfile.close()
+
+# scrittura su un file csv
+dati = [
+   ["Nome", "Età", "Città"],
+   ["Samuele", 20, "Catania"],
+   ["John", 23, "New York"]
+]
+
+with open("./res/output.csv", "w", newline="") as csvfile:
+   scrittore = csv.writer(csvfile)
+   scrittore.writerows(dati)
+   csvfile.close()
+   
+#! JSON
+import json
+
+# lettura da un file json
+with open("./res/config.json", "r") as file:
+   dati = json.load(file)
+   file.close()
+print(dati)
+
+# scrittura su un file json
+
+infos = {
+   "Nome" : "Samuele",
+   "Età" : 20,
+   "Città": "Catania"
+}
+
+with open("./res/output.json", "w") as file:
+   json.dump(infos, file,  indent=4)
+   file.close()
