@@ -17,7 +17,7 @@ print(multiline_string)
 raw_string=r"C:\Users\Samuele" # non tiene conto degli escape
 print(raw_string)
 
-# #! INPUT
+#! INPUT
 
 # nome = input("Come ti chiami? ") # di default input() prende una stringa
 # print(f"Ciao {nome}")
