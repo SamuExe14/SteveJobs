@@ -58,7 +58,7 @@ def aggiungi_prodotto(magazzino):
       "quantita": quantita
    })
    print(f"Prodotto '{nome}' aggiunto con successo.")
-   
+
 def modifica_prodotto(magazzino):
    nome = input("Inserisci il nome del prodotto da modificare: ")
    for prodotto in magazzino:
@@ -85,11 +85,6 @@ def modifica_prodotto(magazzino):
    except UnboundLocalError:
       print(f"{nome} non è stato trovato in magazzino")
 
-def get_magazzino(magazzino):
-   for prodotto in magazzino:
-      for key, value in prodotto.items():
-         print(f"{key}:{value}")
-
 def rimuovi_prodotto(magazzino):
    nome = input("Inserire prodotto che si vuole rimuovere dal magazzino: ")
    for prodotto in magazzino:
@@ -105,11 +100,16 @@ def rimuovi_prodotto(magazzino):
    except UnboundLocalError:
       print(f"{nome} non è stato trovato in magazzino")
    
+def get_magazzino(magazzino):
+   for prodotto in magazzino:
+      for key, value in prodotto.items():
+         print(f"{key}:{value}")
+
 def get_tot_magazzino(magazzino):
    totale = 0
    for prodotto in magazzino:
-      totale += prodotto["prezzo"]
-   print(f"Il totale del magazzino è {float(totale)}")
+      totale += (prodotto["prezzo"] * prodotto["quantita"])
+   print(f"Il totale del magazzino è {totale:.2f}")
 
 magazzino = []
 
@@ -119,17 +119,15 @@ while True:
       case 1:
          aggiungi_prodotto(magazzino)
          get_magazzino(magazzino)
-         # print(magazzino)
       case 2:
          modifica_prodotto(magazzino)
-         get_magazzino()
-         # print(magazzino)
+         get_magazzino(magazzino)
       case 3:
          rimuovi_prodotto(magazzino)
          get_magazzino(magazzino)
       case 4:
          # TODO mi rompo il cazzo a fare sta parte
-         print("")
+         print("Questa funzione non è ancora stata implementata, lo sviluppatore si rompeva il cazzo")
       case 5:
          get_tot_magazzino(magazzino)
       case 6:
