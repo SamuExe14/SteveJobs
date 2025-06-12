@@ -107,7 +107,7 @@ finally:
 import csv
 
 # lettura da un file csv
-with open("./res/dati.csv") as csvfile:
+with open("./res/dati.csv", "r") as csvfile:
    lettore = csv.reader(csvfile, delimiter=",")
    for riga in lettore:
       print(riga)
